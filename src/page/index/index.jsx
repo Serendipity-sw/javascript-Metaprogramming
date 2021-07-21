@@ -117,7 +117,24 @@ class FormData extends Validate {
 class Index extends React.Component {
   #data = new FormData({name: '', age: '', sex: ''})
 
+  #handler = {
+    get: (target, name) => {
+      return name in target ? target[name] : 42;
+    },
+    set: (target, name, value) => {
+      if (value === 1) {
+        console.log('不允许赋值')
+        return Reflect.set(target, name, '')
+      } else {
+        return Reflect.set(target, name, value)
+      }
+    }
+  }
+
   componentDidMount() {
+    let p = new Proxy({}, this.#handler)
+    p.a = 1
+    console.log(p.a, p.b)
     this.#data.validate()
   }
 
