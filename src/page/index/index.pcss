@@ -1,0 +1,28 @@
+:root {
+  --homeSize: 50Px;
+}
+
+html, body {
+  size: 100%;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+:global #root {
+  size: 100%;
+  background: url("./images/login-bg.png") no-repeat 100%;
+  background-size: 100% 100%;
+}
+
+.home {
+  size: 100%;
+  @util center;
+  flex-direction: column;
+
+  span {
+    color: white;
+  }
+}
